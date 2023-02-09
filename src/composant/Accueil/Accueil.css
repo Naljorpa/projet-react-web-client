@@ -1,0 +1,40 @@
+.pageAccueil .contenu {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.pageAccueil .contenu .bandeau {
+    display: flex;
+    height: calc(3 * var(--unite));
+    background-color: #fff8e1;
+    flex-direction: column;
+    justify-content: center;
+}
+.pageAccueil .contenu .bandeau .btnAction {
+    border: 3px dashed;
+    border-color: var(--couleur-accent);
+    margin: auto;
+    padding: 10px;
+    color: var(--couleur-accent);
+    font-weight: bold;
+    font-size: 18px;
+    transition: border-color 200ms, color 200ms;
+    text-decoration: none;
+}
+.pageAccueil .contenu .bandeau .btnAction:hover {
+    color: #ddd;
+    border-color: #ddd;
+    transition: border-color 200ms, color 200ms;
+}
+.pageAccueil .contenu .arguments {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.pageAccueil .contenu .arguments div {
+    height: 200px;
+    width: 200px;
+}

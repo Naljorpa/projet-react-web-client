@@ -1,0 +1,8 @@
+.mesProduits{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.mesProduits {
+    color: #000;
+}

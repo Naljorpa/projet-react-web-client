@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,latin-ext);
+:root {
+  --font-stack:    'Roboto', sans-serif;
+
+  --couleur-primaire: #FFC107; /*Amber 500*/
+  --couleur-primaire-pale: #FFD54F; /*Amber 300*/
+  --couleur-primaire-foncee: #FFA000; /*Amber 700*/
+
+  --couleur-accent: #00E5FF; /*Cyan A400*/
+  --background: #fafafa;
+  --unite: 68px;
+}
+
+
+body
+{
+    margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	background-color: var(--background);
+	font-family: var(--font-stack);
+	
+	
+}
+body.scroll
+{
+	padding-top: 136px!important;
+}
+
+@keyframes animBiere
+{
+	from
+	{
+		opacity: 0;
+		transform: scale(0);
+	}
+	to
+	{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
