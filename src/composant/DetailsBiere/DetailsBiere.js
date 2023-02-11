@@ -25,7 +25,7 @@ export default function DetailsBiere({ estConnecte, courriel }) {
             .then(data => {
                 setCommentaires(data);
             })
-        
+
         fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/note")
             .then(data => data.json())
             .then(data => {
@@ -80,9 +80,7 @@ export default function DetailsBiere({ estConnecte, courriel }) {
         })
             .then(reponse => reponse.json())
             .then(data => {
-
                 console.log("sent", data);
-                //TO DO: ameliorer la vitesse du fetch, pour l'instant je dois appuyer deux fois pour que ca update
                 //deuxième fetch pour mettre à jour la note affichée
                 fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/note")
                     .then(data => data.json())
@@ -99,7 +97,7 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     //https://stackoverflow.com/questions/37929825/how-to-access-data-attributes-from-event-object
     let lesEtoiles = Array(5).fill().map((v, i) => {
         return (
-            <span className="etoile" data-note={++i} onClick={(e) => {  RecupererNote(e); }} >
+            <span className="etoile" data-note={++i} onClick={(e) => { RecupererNote(e); }} >
                 ☆
             </span>
         );
@@ -115,6 +113,9 @@ export default function DetailsBiere({ estConnecte, courriel }) {
 
     const [newComment, setNewComment] = useState({})
 
+    //Je récupère la valeur et la set de façon séparé afin de l'effacer après l'envoi
+    const [commentValue, setCommentValue] = useState('');
+
     /**
      * Récupère l'évènement du onclick et récupère la note
      * @param {*} e 
@@ -123,23 +124,30 @@ export default function DetailsBiere({ estConnecte, courriel }) {
 
         let commentValue = e.target.value;
         console.log(commentValue);
-        let newComment = {
-            commentaire: commentValue,
-            id_biere: parseInt(id),
-            courriel: courriel
-        }
-        setNewComment(newComment);
+
+        setCommentValue(commentValue);
     }
 
     let votreCommentaire = "";
     let votreNote = "";
     if (estConnecte) {
         votreNote = <div><p>Entrez votre note: {lesEtoiles}</p></div>;
-        votreCommentaire =<div><label>Entrez votre commentaires : </label> <textarea name="commentaire" onChange={(e) => {  RecupererCommentaire(e); }} ></textarea><button className="btnSoumettre" onClick={() =>{AjouterCommentaire()}}>Envoyer le commentaire</button></div>;
+        votreCommentaire =
+            <div>
+                <label>Entrez votre commentaires : </label>
+                <textarea name="commentaire" value={commentValue} onChange={(e) => { RecupererCommentaire(e); }} ></textarea>
+                <button className="btnSoumettre" onClick={() => { AjouterCommentaire() }}>Envoyer le commentaire</button>
+            </div>;
     }
 
     function AjouterCommentaire() {
-       
+        let newComment = {
+            commentaire: commentValue,
+            id_biere: parseInt(id),
+            courriel: courriel
+        }
+        setNewComment(newComment);
+        setCommentValue('');
         var entete = new Headers();
         entete.append("Content-Type", "application/json");
         entete.append("Authorization", "Basic " + btoa("biero:biero"));
@@ -151,6 +159,11 @@ export default function DetailsBiere({ estConnecte, courriel }) {
             .then(reponse => reponse.json())
             .then(data => {
                 console.log('sent commentaire', data);
+                fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/commentaire")
+                .then(data => data.json())
+                .then(data => {
+                    setCommentaires(data);
+                });
             });
     }
 

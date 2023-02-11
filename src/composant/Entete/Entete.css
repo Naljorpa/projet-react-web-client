@@ -1,15 +1,96 @@
-
 .pageActive {
     font-weight: bold;
 }
 
 .logo {
     display: block;
-    background: url(/src/logo.svg) ;
+    background: url(/src/logo.svg);
     background-size: cover;
     width: 200px;
-    margin: 10px 0 0 20px;
-    
-  }
+    height: 80px;
+   
+}
 
- 
+header {
+	box-shadow: 0 2px 3px #000;
+}
+
+
+nav {
+	background:    #e7912f;
+}
+
+
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.top-nav .barre {
+    display: flex;
+    flex-direction: row;
+    z-index: 200;
+}
+
+.top-nav li {
+    list-style: none outside none;
+    cursor: pointer;
+}
+
+.top-nav li a {
+    color: #000000;
+    font-size: 1.25rem;
+    padding: 1.25rem;
+}
+
+.top-nav li a:hover {
+    font-weight: bolder;
+}
+
+.form-courriel{
+    display: flex;
+    flex-direction: column;
+}
+
+.top-nav label{
+    margin-bottom: 5px;
+}
+
+.top-nav button{
+    display: block;
+    margin-top: 10px;
+    padding:5px 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    
+}
+
+.top-nav button:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+
+    header{
+        position: relative;
+    }
+
+	.top-nav {
+		flex-direction: column;
+        position:relative;
+	}
+
+	.top-nav ul {
+		display: flex;
+		padding: 0;
+		top: 80px;
+        margin-bottom: 20px;
+	}
+}
