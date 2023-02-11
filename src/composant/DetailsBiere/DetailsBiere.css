@@ -1,0 +1,13 @@
+.etoile{
+    font-size: 50px;
+}
+
+.etoile:hover{
+    cursor: pointer;
+    font-size: 50px;
+}
+
+.etoile:hover ~ span{
+    font-size: 40px;
+}
+

@@ -298,13 +298,9 @@ ul.chevron .aside-sub-submenu>a:after {
 	margin: 0 0.625rem;
 }
 
-.top-nav .active-item a {
-	background: #2b4c61;
-}
 
 .aside-nav>ul>li.active-item>a:link,
 .aside-nav>ul>li.active-item>a:visited {
-	background: #2b4c61;
 	color: #fff;
 }
 
@@ -400,7 +396,7 @@ ul.chevron .aside-sub-submenu>a:after {
 .aside-nav li li.active-item>a,
 .aside-nav li li.aside-sub-submenu li a:hover {
 	color: #fff;
-	background: #2b4c61;
+
 }
 
 .aside-nav>ul>li>a:hover {
@@ -1397,25 +1393,24 @@ header.cache {
 }
 
 nav {
-	background: none repeat scroll 0 0 #162b4d;
+	background: none repeat scroll 0 0 #e7912f;
 	position: relative;
 
 }
 
-a.logo {
+/* a.logo {
 	color: #fff;
 	display: inline-block;
 	font-size: 2.3rem;
 	font-weight: 700;
 	letter-spacing: -1px;
-	padding: 0.55em;
-	padding: 0.55em;
+	padding-top: 1.2em;
 }
 
 a.logo span {
 	color: #FFF;
 	font-weight: 100;
-}
+} */
 
 header h1 {
 	color: #637693;
@@ -1431,14 +1426,14 @@ header h1 {
 .top-nav {
 	display: flex;
 	flex-direction: column;
-	height: 95px;
+	
 }
 
 .top-nav .barre {
 	display: flex;
 	flex-direction: row;
 	z-index: 200;
-	background-color: #162b4d;
+	background-color: #e7912f;
 }
 
 
@@ -1496,14 +1491,14 @@ header h1 {
 }
 
 .top-nav li a {
-	color: #fff;
+	color: #000000;
 	font-size: 1rem;
 	padding: 1.25rem;
 }
 
 
 .top-nav li a:hover {
-	background: #2b4c61;
+	
 }
 
 
@@ -1515,12 +1510,12 @@ header h1 {
 }
 
 .top-nav li a:hover {
-	background: none repeat scroll 0 0 #283D5F;
+	text-decoration: underline;
 }
 
 .top-nav .active-item a,
 .top-nav .active-item a:hover {
-	background: none repeat scroll 0 0 #0b192f;
+
 }
 
 .social {
@@ -1942,7 +1937,7 @@ address {
 }
 
 address i.icon {
-	background: none repeat scroll 0 0 #0b192f;
+
 	border-radius: 30px;
 	color: #fff;
 	display: block;
@@ -1981,9 +1976,7 @@ header h1 {
 
 
 .top-nav li a {
-	background: none repeat scroll 0 0 #162b4d;
-	border-top: 1px solid #0b192f;
-	color: #fff;
+
 	display: block;
 }
 

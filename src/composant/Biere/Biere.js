@@ -1,7 +1,7 @@
 import React from 'react';
-import './Produit.css';
+import './Biere.css';
 
-export default class Produit extends React.Component{
+export default class Biere extends React.Component{
     constructor(props){
         super(props);
 
@@ -16,7 +16,7 @@ export default class Produit extends React.Component{
                     </>;
         }
         return (
-            <article className="produit">
+            <article className="biere">
                 <p>Nom : {this.props.nom}</p>
                 <p>Nom : {this.props.biere.nom}</p>
                 {prix}

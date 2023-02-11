@@ -1,10 +1,10 @@
 import React from 'react';
 import Entete from '../Entete/Entete';
-import ListeProduit from '../ListeProduit/ListeProduit';
+import ListeBieres from '../ListeBieres/ListeBieres';
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import Accueil from '../Accueil/Accueil';
-import Details from '../Details/Details';
+import DetailsBiere from '../DetailsBiere/DetailsBiere';
 
 export default class App extends React.Component{
   constructor(){
@@ -36,8 +36,8 @@ export default class App extends React.Component{
     
     //this.compteur++;
     console.log(this.state.compteur);
-   
   }
+  
 
   render(){
     return (
@@ -45,14 +45,14 @@ export default class App extends React.Component{
         <Entete seConnecter={this.connection} estConnecte={this.state.estConnecte} />
         <Routes>
           <Route path="/" element={<Accueil />}/>
-          <Route path="/produit"  element={<ListeProduit />}/>
-          <Route path="/produit/:id"  element={<Details estConnecte={this.state.estConnecte} courriel={this.state.courriel}/>}/>
+          <Route path="/bieres"  element={<ListeBieres />}/>
+          <Route path="/biere/:id"  element={<DetailsBiere estConnecte={this.state.estConnecte} courriel={this.state.courriel}/>}/>
         </Routes>
       </Router>
 
       //<section className='App'>
       //  <button onClick={this.augmenteCompte}>Clique ({this.state.compteur})</button>
-      //  <ListeProduit estConnecte={this.state.estConnecte} compteur={this.state.compteur} />
+      //  <ListeBieres estConnecte={this.state.estConnecte} compteur={this.state.compteur} />
   
 
       //</section>

@@ -14,7 +14,7 @@ export default class Accueil extends React.Component {
             <div className="pageAccueil">
 				<div className="contenu">
 					<div className="bandeau">
-						<a href="/produit" className="btnAction">Notre sélection de produit</a>
+						<a href="/bieres" className="btnAction">Notre sélection de bieres</a>
 					</div>
 					<div className="arguments">
 						<div>Argument 1 : (à compléter) 

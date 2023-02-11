@@ -18,7 +18,11 @@ export default class Entete extends React.Component{
     console.log(evt.target.value)
     let courriel= evt.target.value;
     let valide;
-    if(courriel != ""){ // Valide un courriel non vide... à refaire genre avec un regexp... tsé...
+    let regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    //regex provenant de https://mailtrap.io/blog/validate-emails-in-react/
+    //methode test prise de https://stackoverflow.com/questions/41348459/regex-in-react-email-validation
+    //test le courriel par rapport la regex
+    if(regex.test(courriel)){ 
       valide = true;
     }else{
       valide = false;
@@ -43,7 +47,7 @@ export default class Entete extends React.Component{
             <div className="top-nav">
               <div className="barre">
                 <Link className="logo" to="/">
-                  B<span>iero</span>
+                 
                 </Link>
                 <span className="flex-spacer"></span>
                 <p className="menu-mobile"></p>
@@ -51,7 +55,7 @@ export default class Entete extends React.Component{
               <span className="flex-spacer"></span>
               <ul>
                 <li>
-                  <NavLink to="/produit">Les produits</NavLink>
+                  <NavLink to="/bieres">Les bieres</NavLink>
                 </li>
               </ul>
               <section>

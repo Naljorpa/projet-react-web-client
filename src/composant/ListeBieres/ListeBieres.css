@@ -1,8 +1,8 @@
-.mesProduits{
+.mesBieres{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
-.mesProduits {
+.mesBieres {
     color: #000;
 }
