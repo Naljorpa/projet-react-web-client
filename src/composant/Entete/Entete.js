@@ -50,16 +50,18 @@ export default class Entete extends React.Component {
 
               </Link>
             </div>
-            <div>
-              <ul>
-                <li>
-                  <NavLink to="/bieres">Les bieres</NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className='form-courriel'>
-              <label>Courriel : </label><input disabled={this.props.estConnecte} type="email" onChange={this.setCourriel}></input>
-              <button disabled={!this.state.courrielValide} onClick={this.seConnecter}>{btnConnecter}</button>
+            <div className='nav-biere-courriel'>
+              <div>
+                <ul>
+                  <li>
+                    <NavLink to="/bieres">Les bieres</NavLink>
+                  </li>
+                </ul>
+              </div>
+              <div className='form-courriel'>
+                <label>Courriel : </label><input disabled={this.props.estConnecte} type="email" onChange={this.setCourriel}></input>
+                <button disabled={!this.state.courrielValide} onClick={this.seConnecter}>{btnConnecter}</button>
+              </div>
             </div>
           </div>
         </nav>

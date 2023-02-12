@@ -4,31 +4,32 @@ import { Link } from 'react-router-dom';
 import './Accueil.css';
 
 export default class Accueil extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {};
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="pageAccueil">
-				<div className="contenu">
-					<div className="bandeau">
-						<a href="/bieres" className="btnAction">Notre sélection de bieres</a>
-					</div>
-					<div className="arguments">
-						<div>Argument 1 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
+                <h1>Bienvenue sur Biero</h1>
+                <div className="contenu">
+                    <div className="bandeau">
+                        <a href="/bieres" className="btnAction">Notre sélection de bieres</a>
+                    </div>
+                    <div className="arguments">
+                        <div>
+                            <h2>Une sélection exceptionnelle de bières</h2>
                         </div>
-						<div>Argument 2 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
+                        <div>
+                            <h2>Notez vos dégustations</h2>
                         </div>
-						<div>Argument 3 : (à compléter) 
-                            <p>Pourquoi utiliser notre application?</p><p>Lorem ipsum...</p>
-                            </div>
-					</div>
-				</div>
-			</div>
+                        <div>
+                            <h2>Participer à la communauté en commentant nos bières</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

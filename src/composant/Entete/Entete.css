@@ -20,15 +20,18 @@ nav {
 	background:    #e7912f;
 }
 
-
+.nav-biere-courriel{
+    display: flex;
+    align-items: center;
+}
 
 .top-nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
     padding: 20px;
+    justify-content: space-between;
 }
 
 .top-nav .barre {
@@ -86,6 +89,10 @@ nav {
 		flex-direction: column;
         position:relative;
 	}
+
+    .nav-biere-courriel{
+        flex-direction: column;
+    }
 
 	.top-nav ul {
 		display: flex;

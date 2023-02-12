@@ -626,8 +626,9 @@ footer {
 body
 {
 	font-weight: 300;
-	background-color: var(--background);
 	font-family: var(--font-stack);
+	width: 100%;
+	height: 100%;
 }
 
 

@@ -1,40 +1,75 @@
+.pageAccueil{
+    background-image: url(beer-background.jpeg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.pageAccueil h1{
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+.pageAccueil h2{
+   font-size: 30px;
+}
+
 .pageAccueil .contenu {
-    padding-top: 0px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    margin: 0 20px;
+    padding-bottom: 40px;
 }
 .pageAccueil .contenu .bandeau {
     display: flex;
-    height: calc(3 * var(--unite));
-    background-color: #fff8e1;
     flex-direction: column;
     justify-content: center;
 }
 .pageAccueil .contenu .bandeau .btnAction {
-    border: 3px dashed;
-    border-color: var(--couleur-accent);
-    margin: auto;
-    padding: 10px;
-    color: var(--couleur-accent);
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 40px auto 100px;
+    padding: 15px;
+    color: black;
+    background-color: rgb(255, 255, 255, 0.85);
     font-weight: bold;
     font-size: 18px;
     transition: border-color 200ms, color 200ms;
     text-decoration: none;
 }
 .pageAccueil .contenu .bandeau .btnAction:hover {
-    color: #ddd;
-    border-color: #ddd;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.55);
     transition: border-color 200ms, color 200ms;
 }
 .pageAccueil .contenu .arguments {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-left: 20%;
-    padding-right: 20%;
+    justify-content: space-evenly;
+    color: white;
 }
 .pageAccueil .contenu .arguments div {
+    border: 1px solid black;
+    border-radius: 10px;
+    color: black;
+    padding: 20px;
+    background-color: rgb(255, 255, 255, 0.85) ;
     height: 200px;
-    width: 200px;
+    width: 300px;
+    text-align: center;
+}
+
+@media screen and (max-width:1000px) {
+    .pageAccueil{
+    height: 100%;
+    }
+
+
+    .pageAccueil .contenu .arguments {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
 }
