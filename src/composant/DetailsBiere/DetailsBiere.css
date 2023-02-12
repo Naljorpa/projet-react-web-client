@@ -1,13 +1,142 @@
-.etoile{
+.detail {
+    background-image: url(beer-background3.jpg);
+    background-size: cover;
+    height: 100%;
+    background-position: -500px 0;
+    padding: 0 20px 80px 20px;
+}
+
+.detail h1{
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+.detail h2{
+    margin: 0 0 30px 0;
+    padding-top: 50px;
+    color: white;
+}
+
+.detail h3{
+    margin: 0;
+    padding-top: 50px;
+    color: white;
+}
+
+.detail p, .detail label{
+    margin: 0;
+    color: white;
+}
+
+.detail small{
+    display: block;
+    margin-top: 10px;
+    color: white;
+}
+
+.detail .img-detail{
+    width: 300px;
+    overflow: hidden
+}
+
+.detail .img-detail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-desc{
+    display: flex;
+    gap: 40px;
+}
+
+.desc-note p:not(:first-of-type){
+    margin-top: 40px;
+}
+
+.desc-note{
+    width: 50%;
+}
+
+.zone-comment{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+}
+
+.zone-comment textarea{
+    width: 100%;
+    height: 100px;
+}
+
+.zone-comment button{
+    border: 1px solid black;
+    border-radius: 10px;
+   
+    padding: 15px;
+    color: black;
+    background-color: rgb(255, 255, 255, 0.85);
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.zone-comment button:hover{
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.55);
+    transition: border-color 200ms, color 200ms;
+    cursor: pointer;
+}
+
+.unCommentaire{
+    width: 50%;
+    background-color: rgb(255, 255, 255, 0.85);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.unCommentaire p, .unCommentaire small{
+    color: black;
+}
+
+.etoile {
     font-size: 50px;
 }
 
-.etoile:hover{
+.etoile:hover {
     cursor: pointer;
     font-size: 50px;
 }
 
-.etoile:hover ~ span{
+.etoile:hover~span {
     font-size: 40px;
 }
 
+
+
+@media screen and (max-width: 750px) {
+
+    .detail-desc{
+        display: block;
+    }
+
+    .desc-note{
+        width: 100%;
+    }
+
+    .detail .img-detail{
+        width: 100%;
+        overflow: hidden
+    }
+
+    .zone-comment{
+        width: 100%;
+    }
+
+    .unCommentaire{
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 import "./DetailsBiere.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import can from './beer-can.jpg';
 
 export default function DetailsBiere({ estConnecte, courriel }) {
 
@@ -104,10 +105,16 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     })
 
     let listeCommentaires = commentaires.data.map((unCommentaire, index) => {
+        console.log(unCommentaire);
         return (
-            <p>
-                {unCommentaire.commentaire};
-            </p>
+            <div className="unCommentaire">
+                <p>
+                    {unCommentaire.commentaire}
+                </p>
+                <small>
+                    envoyé par: {unCommentaire.courriel}
+                </small>
+            </div>
         );
     })
 
@@ -133,7 +140,7 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     if (estConnecte) {
         votreNote = <div><p>Entrez votre note: {lesEtoiles}</p></div>;
         votreCommentaire =
-            <div>
+            <div className="zone-comment">
                 <label>Entrez votre commentaires : </label>
                 <textarea name="commentaire" value={commentValue} onChange={(e) => { RecupererCommentaire(e); }} ></textarea>
                 <button className="btnSoumettre" onClick={() => { AjouterCommentaire() }}>Envoyer le commentaire</button>
@@ -160,10 +167,10 @@ export default function DetailsBiere({ estConnecte, courriel }) {
             .then(data => {
                 console.log('sent commentaire', data);
                 fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/commentaire")
-                .then(data => data.json())
-                .then(data => {
-                    setCommentaires(data);
-                });
+                    .then(data => data.json())
+                    .then(data => {
+                        setCommentaires(data);
+                    });
             });
     }
 
@@ -174,15 +181,24 @@ export default function DetailsBiere({ estConnecte, courriel }) {
 
 
     return (
-        <section>
+        <section className="detail">
             <h1>Details d'une bière</h1>
             <h2>{biere.nom}</h2>
-            <p>Note: {noteAffiche}</p>
-            {votreNote}
-            <p>{biere.description}</p>
+            <div className="detail-desc">
+                <div className="img-detail">
+                    <img src={can} alt='image de cannette'></img>
+                </div>
+                <div className="desc-note">
+                    <p>Note: {noteAffiche}</p>
+                    {votreNote}
+                    <p>{biere.description}</p>
+                </div>
+            </div>
+
             {votreCommentaire}
             <h3>Commentaires:</h3>
             {listeCommentaires}
+
         </section>
 
     );
