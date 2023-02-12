@@ -1,26 +1,25 @@
 import React from 'react';
 import './Biere.css';
+import can from './beer-can.jpg';
 
-export default class Biere extends React.Component{
-    constructor(props){
+export default class Biere extends React.Component {
+    constructor(props) {
         super(props);
 
     }
-    render(){
-        
-        let prix = ""
-        if(this.props.estConnecte){
-            prix =  <>
-                        <p>Prix : {this.props.prix}</p>
-                        <p>Prix : {this.props.biere.prix}</p>
-                    </>;
-        }
+    render() {
+
         return (
             <article className="biere">
-                <p>Nom : {this.props.nom}</p>
-                <p>Nom : {this.props.biere.nom}</p>
-                {prix}
-                
+                <div className='img-biere'>
+                    <img src={can} alt='image de cannette'></img>
+                </div>
+                <div className='texte'>
+                    <h2>Nom : {this.props.biere.nom}</h2>
+                    <p>Brasserie: {this.props.biere.brasserie}</p>
+                </div>
+
+
             </article>
         );
     }

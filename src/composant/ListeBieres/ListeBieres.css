@@ -1,7 +1,25 @@
+.liste{
+    background-image: url(beer-background2.jpeg);
+    background-size: cover;
+    background-position: 0 -500px;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.liste h1{
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
 .mesBieres{
+    margin-top: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
 }
 .mesBieres {
     color: #000;

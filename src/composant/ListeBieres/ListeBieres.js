@@ -29,7 +29,6 @@ export default class ListeBieres extends React.Component{
     fetch("http://127.0.0.1:8000/serviceWeb_PHP/biere")
       .then(data=>data.json())
       .then(data=>{
-        console.log(data);
         this.setState({
           bieres : data.data
         })
@@ -40,16 +39,14 @@ export default class ListeBieres extends React.Component{
   render(){
 
     let aBieres = this.state.bieres.map((uneBiere, index)=>{
-      //console.log(unProduit, index)
       // Choisir sa façon, pas les deux...}
         //<Produit nom={unProduit.nom} id={unProduit.id_biere} description={unProduit.description} />
       return ( 
         <Link key={uneBiere.id_biere} to={"/biere/" + uneBiere.id_biere}>
-            <Biere estConnecte={this.props.estConnecte}  biere={uneBiere} {...uneBiere} /> 
+            <Biere estConnecte={this.props.estConnecte}  biere={uneBiere} /> 
         </Link>
       );
     })
-    console.log(aBieres)
     
     if(aBieres.length <= 0){
       aBieres = <p>Aucune biere disponible</p>;
@@ -57,8 +54,7 @@ export default class ListeBieres extends React.Component{
 
     return (
       <div className="liste">
-        <h1>liste</h1>
-        <p>Compteur : {this.props.compteur}</p>
+        <h1>Notre sélection de bières</h1>
         {/*}<p>{this.state.messageErreur}</p>{*/}
         <section className='mesBieres'>
           {aBieres}
