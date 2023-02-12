@@ -5,15 +5,19 @@ import can from './beer-can.jpg';
 
 export default function DetailsBiere({ estConnecte, courriel }) {
 
-    // console.log(estConnecte, courriel)
     const { id } = useParams();
-    //const params = useParams();
-    //console.log(id, params)
     const [biere, setBiere] = useState({});
     const [commentaires, setCommentaires] = useState({ data: [] });
     const [note, setNote] = useState({ data: [] });
+    const [newNote, setNewNote] = useState({});
+    const [newComment, setNewComment] = useState({})
+    //Je récupère la valeur d'un commentaire et la set de façon séparé afin de l'effacer après l'envoi
+    const [commentValue, setCommentValue] = useState('');
 
 
+   
+
+    //Les fetch initiaux
     useEffect(() => {
 
         fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id)
@@ -40,7 +44,7 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     //https://jasonwatmore.com/post/2020/11/02/react-fetch-http-put-request-examples
     //j'aimerais également remercier les dieux pour la révélation que le service web attendait le courriel et non l'id de l'utilisateur
 
-    const [newNote, setNewNote] = useState({})
+
 
     /**
      * Récupère l'évènement du onclick et récupère la note
@@ -49,7 +53,6 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     function RecupererNote(e) {
 
         let noteValue = e.target.getAttribute("data-note")
-        console.log(noteValue);
         let newNote = {
             note: parseInt(noteValue),
             id_biere: parseInt(id),
@@ -81,7 +84,6 @@ export default function DetailsBiere({ estConnecte, courriel }) {
         })
             .then(reponse => reponse.json())
             .then(data => {
-                console.log("sent", data);
                 //deuxième fetch pour mettre à jour la note affichée
                 fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/note")
                     .then(data => data.json())
@@ -92,37 +94,6 @@ export default function DetailsBiere({ estConnecte, courriel }) {
 
     };
 
-
-
-    //https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
-    //https://stackoverflow.com/questions/37929825/how-to-access-data-attributes-from-event-object
-    let lesEtoiles = Array(5).fill().map((v, i) => {
-        return (
-            <span className="etoile" data-note={++i} onClick={(e) => { RecupererNote(e); }} >
-                ☆
-            </span>
-        );
-    })
-
-    let listeCommentaires = commentaires.data.map((unCommentaire, index) => {
-        console.log(unCommentaire);
-        return (
-            <div className="unCommentaire">
-                <p>
-                    {unCommentaire.commentaire}
-                </p>
-                <small>
-                    envoyé par: {unCommentaire.courriel}
-                </small>
-            </div>
-        );
-    })
-
-    const [newComment, setNewComment] = useState({})
-
-    //Je récupère la valeur et la set de façon séparé afin de l'effacer après l'envoi
-    const [commentValue, setCommentValue] = useState('');
-
     /**
      * Récupère l'évènement du onclick et récupère la note
      * @param {*} e 
@@ -130,23 +101,14 @@ export default function DetailsBiere({ estConnecte, courriel }) {
     function RecupererCommentaire(e) {
 
         let commentValue = e.target.value;
-        console.log(commentValue);
 
         setCommentValue(commentValue);
     }
 
-    let votreCommentaire = "";
-    let votreNote = "";
-    if (estConnecte) {
-        votreNote = <div><p>Entrez votre note: {lesEtoiles}</p></div>;
-        votreCommentaire =
-            <div className="zone-comment">
-                <label>Entrez votre commentaires : </label>
-                <textarea name="commentaire" value={commentValue} onChange={(e) => { RecupererCommentaire(e); }} ></textarea>
-                <button className="btnSoumettre" onClick={() => { AjouterCommentaire() }}>Envoyer le commentaire</button>
-            </div>;
-    }
-
+  
+     /**
+     * Ajoute la note avec un fetch put dans la db
+     */
     function AjouterCommentaire() {
         let newComment = {
             commentaire: commentValue,
@@ -165,7 +127,6 @@ export default function DetailsBiere({ estConnecte, courriel }) {
         })
             .then(reponse => reponse.json())
             .then(data => {
-                console.log('sent commentaire', data);
                 fetch("//127.0.0.1:8000/serviceWeb_PHP/biere/" + id + "/commentaire")
                     .then(data => data.json())
                     .then(data => {
@@ -174,12 +135,53 @@ export default function DetailsBiere({ estConnecte, courriel }) {
             });
     }
 
+     //**** Les Rendus *****//
+    
+     let votreCommentaire = "";
+     let votreNote = "";
+ 
+     //https://stackoverflow.com/questions/3746725/how-to-create-an-array-containing-1-n
+     //https://stackoverflow.com/questions/37929825/how-to-access-data-attributes-from-event-object
+     //Génère les étoiles pour donner une note
+     let lesEtoiles = Array(5).fill().map((v, i) => {
+         return (
+             <span className="etoile" data-note={++i} onClick={(e) => { RecupererNote(e); }} >
+                 ☆
+             </span>
+         );
+     })
+     
+     //Génère la liste des commentaires
+     let listeCommentaires = commentaires.data.map((unCommentaire, index) => {
+         return (
+             <div className="unCommentaire">
+                 <p>
+                     {unCommentaire.commentaire}
+                 </p>
+                 <small>
+                     envoyé par: {unCommentaire.courriel}
+                 </small>
+             </div>
+         );
+     })
+     
+     //Si connecteé génère les zones pour entrer notes et commentaires 
+     if (estConnecte) {
+         votreNote = <div><p>Entrez votre note: {lesEtoiles}</p></div>;
+         votreCommentaire =
+             <div className="zone-comment">
+                 <label>Entrez votre commentaires : </label>
+                 <textarea name="commentaire" value={commentValue} onChange={(e) => { RecupererCommentaire(e); }} ></textarea>
+                 <button className="btnSoumettre" onClick={() => { AjouterCommentaire() }}>Envoyer le commentaire</button>
+             </div>;
+     }
+
     //Merci chatgpt pour le parseFloat et le toFixed
     //Formate la note pour n'avoir que deux décimales
     let noteAffiche = parseFloat(note.data.note);
     noteAffiche = noteAffiche.toFixed(2);
 
-
+    // Le rendu en tant que tel qui prend les zones créées plus haut
     return (
         <section className="detail">
             <h1>Details d'une bière</h1>
@@ -197,7 +199,8 @@ export default function DetailsBiere({ estConnecte, courriel }) {
 
             {votreCommentaire}
             <h3>Commentaires:</h3>
-            {listeCommentaires}
+            {/* j'utilise reverse() ici pour inverser le display des commentaires afin de voir le dernier commentaire en premier */}
+            {listeCommentaires.reverse()}
 
         </section>
 
