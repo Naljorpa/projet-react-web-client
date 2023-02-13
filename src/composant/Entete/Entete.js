@@ -36,9 +36,9 @@ export default class Entete extends React.Component {
   }
 
   seConnecter() {
-
     this.props.seConnecter(this.state.courriel)
   }
+  
   render() {
     let btnConnecter = (this.props.estConnecte ? "Se déconnecter" : "Se connecter")
     return (

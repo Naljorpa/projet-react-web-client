@@ -8,21 +8,9 @@ export default class ListeBieres extends React.Component{
     super()
 
     this.state = {bieres: [
-      { id: 1,
-        nom : "Biere 1",
-        prix : 15.50
-      },
-      { id: 2,
-        nom : "Biere 2",
-        prix : 25.50
-      },
-      { id: 3,
-        nom : "Biere 3",
-        prix : 10.50
-      },
+ 
 
-    ], 
-    messageErreur : "Test"}
+    ]}
   }
 
   componentDidMount(){
@@ -39,17 +27,17 @@ export default class ListeBieres extends React.Component{
   render(){
 
     let aBieres = this.state.bieres.map((uneBiere, index)=>{
-      // Choisir sa façon, pas les deux...}
-        //<Produit nom={unProduit.nom} id={unProduit.id_biere} description={unProduit.description} />
+
       return ( 
         <Link key={uneBiere.id_biere} to={"/biere/" + uneBiere.id_biere}>
             <Biere estConnecte={this.props.estConnecte}  biere={uneBiere} /> 
         </Link>
       );
+      
     })
     
     if(aBieres.length <= 0){
-      aBieres = <p>Aucune biere disponible</p>;
+      aBieres = <p className='erreur'>Aucune biere disponible</p>;
     }
 
     return (

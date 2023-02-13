@@ -37,13 +37,6 @@ export default class App extends React.Component {
           <Route path='/*' element={<NotFound />} />
         </Routes>
       </Router>
-
-      //<section className='App'>
-      //  <button onClick={this.augmenteCompte}>Clique ({this.state.compteur})</button>
-      //  <ListeBieres estConnecte={this.state.estConnecte} compteur={this.state.compteur} />
-
-
-      //</section>
     );
   }
 }

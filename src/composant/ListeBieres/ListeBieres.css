@@ -21,6 +21,10 @@
     gap: 40px;
     justify-content: center;
 }
-.mesBieres {
-    color: #000;
+.mesBieres p {
+    color: white;
+}
+
+.mesBieres .erreur {
+   height: 100vh;
 }
